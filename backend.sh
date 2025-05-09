@@ -16,7 +16,7 @@ STAT $?
 
 HEADING "Add User Expense"
 id expense &>>/tmp/backend.log
-if [$? -ne 0]; then
+if [ $? -ne 0 ]; then
   useradd expense &>>/tmp/backend.log
 fi
 STAT $?
