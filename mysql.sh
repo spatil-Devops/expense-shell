@@ -1,7 +1,7 @@
 rm -rf /tmp/mysql.log
 source common.sh
 
-if [-z "$1"]; then
+if [ -z "$1" ]; then
   echo Mysql password is missing
   exit 1
 fi 
