@@ -1,6 +1,6 @@
 rm -rf /tmp/backend.log
 source common.sh
-MYSQL_SERVER_IPADDRESS=10.205.216.121
+MYSQL_SERVER_IPADDRESS=172.31.29.13
 
 HEADING "Diable NodeJS default version"
 dnf module disable nodejs -y &>>/tmp/backend.log
