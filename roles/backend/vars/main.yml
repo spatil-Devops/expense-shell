@@ -1,2 +1,2 @@
 component: backend
-env: dev
+app_path: /app

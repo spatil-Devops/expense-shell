@@ -1,2 +1,2 @@
 component: frontend
-env: dev
+app_path: /usr/share/nginx/html
