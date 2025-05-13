@@ -22,6 +22,11 @@
         path: /usr/share/nginx/html
         state: directory
 
+    - name: Create frontend directory
+      ansible.builtin.file:
+        path: /tmp/frontend.zip
+        state: directory
+
     - name: Download frontend content and extract
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
