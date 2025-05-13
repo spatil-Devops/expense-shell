@@ -46,7 +46,7 @@
       ansible.builtin.dnf:
         name:
           - mysql
-          - python3.11-PyMySQL
+          - python3.11-PyMySQL+rsa
         state: present
 
     - name: Load Schema
