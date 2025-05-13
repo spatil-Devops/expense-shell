@@ -16,7 +16,7 @@
     - name: Copy Expense conf file
       ansible.builtin.copy:
         src: expense.conf
-        dest: /etc/nginx/conf.d/expense.conf
+        dest: /etc/nginx/default.d/expense.conf
 
     - name: Remove old html directory
       ansible.builtin.file:
