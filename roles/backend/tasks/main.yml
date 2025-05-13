@@ -1,7 +1,4 @@
-- name: Backend
-  hosts: all
-  become: true
-  tasks:
+
     - name: Disable nodejs default version
       ansible.builtin.shell: dnf module disable nodejs -y
 
