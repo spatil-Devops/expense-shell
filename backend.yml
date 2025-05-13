@@ -42,11 +42,11 @@
       community.general.npm:
         path: /app
 
-    - name: Install Mysql client and Mysql Python module # Required for mysql_db ansible module
+    - name: Install Mysql client and PyMysql Python module # Required for mysql_db ansible module
       ansible.builtin.dnf:
         name:
           - mysql
-          - python3-PyMySQL
+          - python3.11-PyMySQL
         state: present
 
     - name: Load Schema
