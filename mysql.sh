@@ -10,7 +10,7 @@ HEADING "Installing Mysql"
 dnf install mysql-server -y &>>/tmp/mysql.log
 STAT $?
 
-HEADING "Star Mysql Service"
+HEADING "Start Mysql Service"
 systemctl enable mysqld &>>/tmp/mysql.log
 systemctl start mysqld &>>/tmp/mysql.log
 STAT $?

@@ -1,0 +1,14 @@
+- name: Demo Playbook
+  hosts: all
+  vars:
+    URL: play.ansible.com
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: Print hello world
+      ansible.builtin.debug:
+        msg: "Hello World"
+
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: "URL: {{ URL }}"

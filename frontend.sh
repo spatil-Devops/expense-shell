@@ -4,7 +4,7 @@ source common.sh
 
 
 HEADING "Installing Nginx"
-dnf install nginx -y &>>/tmp/frontend.log
+sudo dnf install nginx -y &>>/tmp/frontend.log
 STAT $?
 
 HEADING "Copy Expense conf file"
