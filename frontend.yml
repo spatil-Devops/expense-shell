@@ -7,6 +7,12 @@
         name: nginx
         state: present
 
+    - name: start Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
     - name: Copy Expense conf file
       ansible.builtin.copy:
         src: expense.conf
@@ -37,4 +43,3 @@
       ansible.builtin.service:
         name: nginx
         state: restarted
-        enabled: true
