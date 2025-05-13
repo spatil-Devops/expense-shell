@@ -32,6 +32,11 @@
         name: /app
         state: directory
 
+    - name: Create App Directory
+      ansible.builtin.file:
+        name: /tmp/backend.zip
+        state: directory
+
     - name: Download Backend content and extract
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
