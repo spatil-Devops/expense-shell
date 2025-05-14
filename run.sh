@@ -1,1 +1,1 @@
-ansible-playbook -i ${component}-${env}.sdevopsp25.site, -e ansible_user=ec2-user -e ansible_password=${SSH_PASSWORD} -e role_name=${role_name} -e env=${env} expense.yml
+ansible-playbook -i ${component}-${env}.sdevopsp25.site, -e ansible_user=ec2-user -e ansible_password=${SSH_PASSWORD} -e role_name=${component} -e env=${env} expense.yml
