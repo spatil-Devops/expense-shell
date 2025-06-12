@@ -1,3 +1,3 @@
 component: backend
 app_path: /app
-secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret={{env}}/data/backend token={{vault_token}} url=https://vault.sdevopsp25.site:8200 validate_certs=false') }}"
+secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=expense-{{env}}/data/backend token={{vault_token}} url=https://vault.sdevopsp25.site:8200 validate_certs=false') }}"
