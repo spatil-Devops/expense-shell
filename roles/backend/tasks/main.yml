@@ -8,7 +8,7 @@
     - name: Install Nodejs
       ansible.builtin.dnf:
         name: nodejs
-        state: present
+        state: present7yhb
 
     - name: Add expense user
       ansible.builtin.user:
@@ -40,8 +40,8 @@
         state: import
         name: all
         target: /app/schema/backend.sql
-        login_user: root
-        login_password: ExpenseApp@1
+        login_user: "{{ secrets.MYSQL_USER }}"
+        login_password: "{{ secrets.MYSQL_PASS }}"
         login_host: mysql-{{env}}.sdevopsp25.site
 
     - name: Start Backend Service
