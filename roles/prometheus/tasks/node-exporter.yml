@@ -1,0 +1,25 @@
+
+- name: Create prometheus user
+  ansible.builtin.user:
+    name: prometheus
+    state: present
+
+- name: Download exporter
+  ansible.builtin.unarchive:
+    src: https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
+    dest: /opt
+    remote_src: true
+    owner: prometheus
+    group: prometheus
+
+- name: Copy exporter service
+  ansible.builtin.template:
+    src: node-exporter.service
+    dest: /etc/systemd/system/node-exporter.service
+
+- name: Node Exporter service
+  ansible.builtin.service:
+    name: node-exporter
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
