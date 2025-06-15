@@ -1,2 +1,4 @@
 dependencies:
   - role: common
+    vars:
+      install_nginx_exporter: true

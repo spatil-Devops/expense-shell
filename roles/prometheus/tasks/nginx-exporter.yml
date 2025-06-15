@@ -1,0 +1,19 @@
+- name: Download Nginx Exporter
+  ansible.builtin.unarchive:
+    src: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v1.2.0/nginx-prometheus-exporter_1.2.0_linux_amd64.tar.gz
+    dest: /opt
+    remote_src: true
+    owner: prometheus
+    group: prometheus
+
+- name: Copy Nginx exporter service file
+  ansible.builtin.template:
+    src: nginx-exporter.service
+    dest: /etc/systemd/system/nginx-exporter.service
+
+- name: Start nginx exporter service
+  ansible.builtin.systemd_service:
+    name: nginx-exporter
+    state: restarted
+    enabled: yes
+    daemon-reload: yes

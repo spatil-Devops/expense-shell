@@ -1,0 +1,10 @@
+[Unit]
+Description = Nginx Exporter Service
+
+[Service]
+User=prometheus
+ExecStart=/opt/nginx-prometheus-exporter --nginx.scrape-uri=http://localhost/health
+SyslogIdentifier=prometheus
+
+[Install]
+WantedBy=multi-user.target
