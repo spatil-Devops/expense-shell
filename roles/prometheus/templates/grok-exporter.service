@@ -1,0 +1,11 @@
+[Unit]
+Description = Node Exporter Service
+
+[Service]
+User=root
+WorkingDirectory=/opt/grok_exporter-0.2.8.linux-amd64
+ExecStart=/bin/bash /opt/grok_exporter-0.2.8.linux-amd64/grok-exporter.sh
+SyslogIdentifier=prometheus
+
+[Install]
+WantedBy=multi-user.target

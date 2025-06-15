@@ -2,3 +2,4 @@ dependencies:
   - role: common
     vars:
       install_nginx_exporter: true
+      install_grok_exporter: true

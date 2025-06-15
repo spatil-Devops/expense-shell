@@ -1,0 +1,24 @@
+global:
+    config_version: 2
+input:
+    type: file
+    path: /var/log/nginx/access.log
+    readall: true
+grok:
+    patterns_dir: ./patterns
+metrics:
+    - type: gauge
+      name: response_time
+      help: Response Time
+      value: '{{.response_time}}'
+      match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:time}%{SPACE}%{WORD:http_method}%{SPACE}%{PATH:http_path}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:response_code}%{SPACE}%{NUMBER:body_size_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
+      labels:
+          http_path: '{{.http_path}}'
+    - type: counter
+      name: response_code
+      help: Response Codes
+      match: '%{IP:client_ip}%{SPACE}%{HTTPDATE:time}%{SPACE}%{WORD:http_method}%{SPACE}%{PATH:http_path}%{SPACE}%{WORD}/%{NUMBER:http_version}%{SPACE}%{NUMBER:response_code}%{SPACE}%{NUMBER:body_size_sent}%{SPACE}%{URI}%{SPACE}%{NUMBER:response_time}'
+      labels:
+          response_code: '{{.response_code}}'
+server:
+    port: 9144

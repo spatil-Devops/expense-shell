@@ -1,0 +1,29 @@
+- name: Download Grok Exporter
+  ansible.builtin.unarchive:
+    src: https://github.com/fstab/grok_exporter/releases/download/v0.2.8/grok_exporter-0.2.8.linux-amd64.zip
+    dest: /opt
+    remote_src: true
+    owner: prometheus
+    group: prometheus
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: config.yml
+    dest: /opt/grok_exporter-0.2.8.linux-amd64/config.yml
+
+- name: Copy Grok exporter service file
+  ansible.builtin.template:
+    src: grok-exporter.service
+    dest: /etc/systemd/system/grok-exporter.service
+
+- name: Copy Grok exporter startup script
+  ansible.builtin.template:
+    src: grok-exporter.sh
+    dest: /opt/grok_exporter-0.2.8.linux-amd64/grok-exporter.sh
+
+- name: Start grok exporter service
+  ansible.builtin.systemd_service:
+    name: grok-exporter
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
