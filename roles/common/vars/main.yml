@@ -1,2 +1,4 @@
 install_nginx_exporter: false
 install_grok_exporter: false
+install_filebeat: false
+configure_rsyslog: false

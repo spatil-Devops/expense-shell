@@ -1,0 +1,9 @@
+- name: Update rsyslog config file
+  ansible.builtin.template:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.d/expense.conf
+
+- name: Restart rsyslog
+  ansible.builtin.systemd_service:
+    name: rsyslog
+    state: restarted

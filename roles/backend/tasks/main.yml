@@ -27,6 +27,13 @@
     - name: Install packages based on package.json
       community.general.npm:
         path: /app
+      become_user: "{{ app_user }}"
+
+    - name: Download Newrelic dependencies
+      community.general.npm:
+        name: newrelic
+        path: /app
+      become_user: "{{ app_user }}"
 
     - name: Install Mysql client and PyMysql Python module # Required for mysql_db ansible module
       ansible.builtin.dnf:
@@ -42,7 +49,7 @@
         target: /app/schema/backend.sql
         login_user: "{{ secrets.MYSQL_USER }}"
         login_password: "{{ secrets.MYSQL_PASS }}"
-        login_host: mysql-{{env}}.sdevopsp25.site
+        login_host: "{{ secrets.DB_HOST }}"
 
     - name: Start Backend Service
       ansible.builtin.service:

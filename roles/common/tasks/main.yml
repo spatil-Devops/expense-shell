@@ -18,3 +18,13 @@
     name: prometheus
     tasks_from: grok-exporter
   when: install_grok_exporter
+
+- name: Install filebeat
+  ansible.builtin.include_role:
+    name: filebeat
+  when: install_filebeat
+
+- name: Configure rsyslog
+  ansible.builtin.include_role:
+    name: rsyslog
+  when: configure_rsyslog

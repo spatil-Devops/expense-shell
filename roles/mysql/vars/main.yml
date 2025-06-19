@@ -1,2 +1,3 @@
 component: mysql
 secrets: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=expense-{{env}}/data/mysql token={{vault_token}} url=https://vault.sdevopsp25.site:8200 validate_certs=false') }}"
+app_user: root

@@ -1,2 +1,5 @@
 dependencies:
   - role: common
+    vars:
+      install_filebeat: true
+      configure_rsyslog: true

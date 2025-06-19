@@ -3,8 +3,11 @@ Description = Backend Service
 
 [Service]
 User=expense
-Environment=DB_HOST="mysql-{{env}}.sdevopsp25.site"
-ExecStart=/bin/node /app/index.js
+WorkingDirectory=/app
+Environment=DB_HOST={{ secrets.DB_HOST }}
+Environment=NEW_RELIC_APP_NAME={{ secrets.NEW_RELIC_APP_NAME }}
+Environment=NEW_RELIC_LICENSE_KEY={{ secrets.NEW_RELIC_LICENSE_KEY }}
+ExecStart=/bin/node -r newrelic /app/index.js
 SyslogIdentifier=backend
 
 [Install]
