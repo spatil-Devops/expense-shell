@@ -6,7 +6,7 @@
 - name: Install filebeat
   ansible.builtin.dnf:
     name: filebeat
-    state: Installed
+    state: installed
 
 - name: Copy filebeat config
   ansible.builtin.template:
